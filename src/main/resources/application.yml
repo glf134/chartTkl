@@ -1,0 +1,21 @@
+server:
+  port: 8022
+spring:
+  application:
+    name: zhuanhuan
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    url: jdbc:mysql://112.126.61.41:3307/taotao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    druid:
+      initial-size: 1
+      min-idle: 1 #最小空闲连接
+      max-active: 20 #最大活动连接
+      test-on-borrow: true #获取连接时测试是否可用
+      stat-view-servlet.allow: true #监控页面启动
+mybatis:
+  # mybatis 别名扫描
+  type-aliases-package: cn.tkl.dockTkl.pojo
+  # mapper.xml文件位置,如果没有映射文件，请注释掉
+  mapper-locations:  classpath:cn.tkl.dockTkl.mappers/*.xml

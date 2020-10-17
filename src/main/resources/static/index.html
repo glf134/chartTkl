@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        #final {position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;}
+        #copy{ display: none;}
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1 align="center">
+                    <small>淘口令转换</small>
+                    <br>
+                    <hr>
+                </h1>
+                <div align="center">
+                    <input id="testValue" type="text">
+                    <button id="clean" type="button">清空</button> <br><br>
+                    <button id="testAjax" type="button">转换</button>
+                    <br><br>
+                    <span id="finally"></span>
+                    <textarea  id="final"></textarea><br><br>
+                    <button id="copy" type="button" >复制</button>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function () {
+        //按钮单击时执行
+        $("#testAjax").click(function () {
+            $.ajax({
+                url: "http://112.126.61.41:8022/operation",
+                method: "post",
+                data: {
+                    "content": $("#testValue").val(),
+                },
+                // contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                success: function (data) {
+                    console.log(data)
+                    if (data) {
+                        $("#finally").html(data)
+                        $("#copy").show();
+
+                    }
+                },
+                error: function () {
+                }
+            })
+        });
+
+        $("#copy").click(function() {
+            var e = document.getElementById("final");//对象是content
+            var a = document.getElementById("finally");//对象是content
+            e.value = a.innerText;
+            e.select();
+            document.execCommand("Copy");
+            // alert("复制成功！");
+        });
+        $("#clean").click(function () {
+            $("#testValue").val("");
+            $("#finally").html("")
+            $("#copy").hide();
+        });
+
+    })
+
+    // function copyText() {
+    //
+    // }
+</script>
+</html>
