@@ -27,3 +27,4 @@ mybatis:
   type-aliases-package: cn.tkl.dockTkl.pojo
   # mapper.xml文件位置,如果没有映射文件，请注释掉
   mapper-locations:  classpath:cn.tkl.dockTkl.mappers/*.xml
+  # 测试1
