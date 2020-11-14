@@ -20,6 +20,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public User queryUserById(@PathVariable("id")Long id){
+        //根据id查询用户
         return this.userService.queryById(id);
     }
 
