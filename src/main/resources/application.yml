@@ -14,8 +14,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: root
-    url: jdbc:mysql://112.126.61.41:3307/taotao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/taotao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     druid:
       initial-size: 1
       min-idle: 1 #最小空闲连接
@@ -28,3 +28,4 @@ mybatis:
   # mapper.xml文件位置,如果没有映射文件，请注释掉
   mapper-locations:  classpath:cn.tkl.dockTkl.mappers/*.xml
   # 测试1
+
